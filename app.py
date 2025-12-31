@@ -11,7 +11,7 @@ ShotGrid Desktop app wrapper for Steamroller Submit Tool.
 
 This app provides a minimal wrapper that launches the existing Steamroller
 Submit UI from ShotGrid Desktop. The actual UI and API code remain separate
-in steamroller-ui-submit and steamroller-tools-submitter repositories.
+in steamroller_ui_submit and steamroller_tools_submitter repositories.
 """
 
 from sgtk.platform import Application

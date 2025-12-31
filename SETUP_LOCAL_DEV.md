@@ -3,32 +3,42 @@
 ## Problem
 ShotGrid Desktop is loading a cached configuration from ShotGrid storage (`v1229186`) instead of your local dev configuration at `D:\Steamroller\dev\tk-config-steamroller`. This means changes to the local config files won't be picked up.
 
-## Solution: Use TK_BOOTSTRAP_CONFIG_OVERRIDE
+## Solution: Use TK_BOOTSTRAP_CONFIG_OVERRIDE and REZ_SERVER_ROOT
 
-Set the `TK_BOOTSTRAP_CONFIG_OVERRIDE` environment variable to point Toolkit to your local dev configuration.
+Set both `TK_BOOTSTRAP_CONFIG_OVERRIDE` and `REZ_SERVER_ROOT` environment variables for local dev:
+- `TK_BOOTSTRAP_CONFIG_OVERRIDE`: Points Toolkit to your local dev configuration
+- `REZ_SERVER_ROOT`: Points to local Rez server path (needed for Maya launch to work)
 
 ### Windows PowerShell (Current Session)
 ```powershell
 $env:TK_BOOTSTRAP_CONFIG_OVERRIDE = "D:\Steamroller\dev\tk-config-steamroller"
+$env:REZ_SERVER_ROOT = "D:\steamroller_pipeline"
 ```
 
 ### Windows Command Prompt (Current Session)
 ```cmd
 set TK_BOOTSTRAP_CONFIG_OVERRIDE=D:\Steamroller\dev\tk-config-steamroller
+set REZ_SERVER_ROOT=D:\steamroller_pipeline
 ```
 
 ### Permanent Setup (System Environment Variable)
 1. Open **System Properties** → **Environment Variables**
-2. Under **User variables**, click **New**
-3. Variable name: `TK_BOOTSTRAP_CONFIG_OVERRIDE`
-4. Variable value: `D:\Steamroller\dev\tk-config-steamroller`
-5. Click **OK** on all dialogs
-6. **Restart ShotGrid Desktop** for the change to take effect
+2. Under **User variables**, click **New** and add:
+   - Variable name: `TK_BOOTSTRAP_CONFIG_OVERRIDE`
+   - Variable value: `D:\Steamroller\dev\tk-config-steamroller`
+3. Click **New** again and add:
+   - Variable name: `REZ_SERVER_ROOT`
+   - Variable value: `D:\steamroller_pipeline`
+4. Click **OK** on all dialogs
+5. **Restart ShotGrid Desktop** for the change to take effect
+
+**Note:** The `NEW_REZ_DEPENDENCY_LIST.json` file must exist at `D:\steamroller_pipeline\NEW_REZ_DEPENDENCY_LIST.json` for Maya launch to work. A minimal file has been created for local dev.
 
 ### Permanent Setup (PowerShell Profile)
 Add this to your PowerShell profile (`$PROFILE`):
 ```powershell
 $env:TK_BOOTSTRAP_CONFIG_OVERRIDE = "D:\Steamroller\dev\tk-config-steamroller"
+$env:REZ_SERVER_ROOT = "D:\steamroller_pipeline"
 ```
 
 ## Verification

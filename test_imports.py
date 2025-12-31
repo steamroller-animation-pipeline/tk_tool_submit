@@ -18,8 +18,8 @@ def test_imports():
     print("=" * 60)
     
     # Add paths (adjust if your paths are different)
-    ui_path = r"D:\Steamroller\dev\steamroller-ui-submit\python"
-    tools_path = r"D:\Steamroller\dev\steamroller-tools-submitter\python"
+    ui_path = r"D:\Steamroller\dev\steamroller_ui_submit\python"
+    tools_path = r"D:\Steamroller\dev\steamroller_tools_submitter\python"
     
     if os.path.exists(ui_path):
         sys.path.insert(0, ui_path)

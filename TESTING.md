@@ -5,8 +5,8 @@ This guide walks you through testing the `tk_tool_submit` app in ShotGrid Deskto
 ## Prerequisites
 
 Before testing, ensure:
-1. ✅ `steamroller-ui-submit` is installed and available in your Python path
-2. ✅ `steamroller-tools-submitter` is installed and available in your Python path
+1. ✅ `steamroller_ui_submit` is installed and available in your Python path
+2. ✅ `steamroller_tools_submitter` is installed and available in your Python path
 3. ✅ ShotGrid Desktop is installed and running
 4. ✅ You have access to a Toolkit project configuration
 
@@ -130,7 +130,7 @@ includes:
 ### Import Error: "Failed to import Steamroller Submit UI"
 
 **Check Python Path:**
-- Ensure `steamroller-ui-submit` is in your Python path
+- Ensure `steamroller_ui_submit` is in your Python path
 - Verify `steamroller.tools.submitter` is available
 - Check if packages are installed via Rez or pip
 
@@ -138,8 +138,8 @@ includes:
 ```python
 # In Python console or ShotGrid Desktop Python console
 import sys
-sys.path.append(r"D:\Steamroller\dev\steamroller-ui-submit\python")
-sys.path.append(r"D:\Steamroller\dev\steamroller-tools-submitter\python")
+sys.path.append(r"D:\Steamroller\dev\steamroller_ui_submit\python")
+sys.path.append(r"D:\Steamroller\dev\steamroller_tools_submitter\python")
 
 from steamroller.ui.submit import main
 main.run()
@@ -167,8 +167,8 @@ import sys
 import os
 
 # Add paths
-sys.path.insert(0, r"D:\Steamroller\dev\steamroller-ui-submit\python")
-sys.path.insert(0, r"D:\Steamroller\dev\steamroller-tools-submitter\python")
+sys.path.insert(0, r"D:\Steamroller\dev\steamroller_ui_submit\python")
+sys.path.insert(0, r"D:\Steamroller\dev\steamroller_tools_submitter\python")
 
 try:
     from steamroller.ui.submit import main

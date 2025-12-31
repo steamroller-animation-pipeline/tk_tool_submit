@@ -11,8 +11,8 @@ This is a minimal Toolkit app that provides a bridge between ShotGrid Desktop an
 ```
 tk_tool_submit (this repo)
     └── Thin wrapper that launches:
-        ├── steamroller-ui-submit (UI code)
-        └── steamroller-tools-submitter (API/backend code)
+        ├── steamroller_ui_submit (UI code)
+        └── steamroller_tools_submitter (API/backend code)
 ```
 
 ## Components
@@ -24,8 +24,8 @@ tk_tool_submit (this repo)
 ## Dependencies
 
 This app requires:
-- `steamroller-ui-submit`: The UI package
-- `steamroller-tools-submitter`: The backend submission API
+- `steamroller_ui_submit`: The UI package
+- `steamroller_tools_submitter`: The backend submission API
 - ShotGrid Toolkit Core v0.20.29 or higher
 
 ## Installation
@@ -82,15 +82,15 @@ tk_tool_submit/
 
 ### Testing
 
-1. Ensure `steamroller-ui-submit` and `steamroller-tools-submitter` are in your Python path
+1. Ensure `steamroller_ui_submit` and `steamroller_tools_submitter` are in your Python path
 2. Launch ShotGrid Desktop
 3. Click the "Submit Tool" menu item
 4. Verify the Submit UI launches correctly
 
 ## Related Repositories
 
-- **steamroller-ui-submit**: The UI package for the submission tool
-- **steamroller-tools-submitter**: The backend API for submissions
+- **steamroller_ui_submit**: The UI package for the submission tool
+- **steamroller_tools_submitter**: The backend API for submissions
 
 ## License
 

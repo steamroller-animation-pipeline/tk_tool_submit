@@ -26,7 +26,7 @@ def show_dialog(app_instance):
     """
     Launch the Steamroller Submit Tool UI as an external application using Rez.
     
-    This function uses Rez to resolve the steamroller.ui.submit package and
+    This function uses Rez to resolve the ui_submit package and
     all its dependencies, then launches the UI in that environment.
     
     Args:
@@ -64,7 +64,7 @@ def show_dialog(app_instance):
             project_id = project.get('id')
             project_name = project.get('name')
         
-        # Launch using Rez: rez-env steamroller.ui.submit yaml -- python launch_submit_ui.py
+        # Launch using Rez: rez-env ui_submit yaml -- python launch_submit_ui.py
         # This will resolve all dependencies (steamroller.core, steamroller.qt, Qt.py, etc.)
         # Also include yaml (PyYAML) which is needed by steamroller.tools.submitter
         # Use 'python' instead of full path - Rez will provide Python in the environment
@@ -81,10 +81,10 @@ def show_dialog(app_instance):
         # Redirect output to log file in the command itself (works better with shell=True)
         if sys.platform == "win32":
             # On Windows, redirect both stdout and stderr to log file, and hide console window
-            rez_command = f'rez-env steamroller.ui.submit yaml -- python "{launcher_script}" > "{log_file}" 2>&1'
+            rez_command = f'rez-env ui_submit yaml -- python "{launcher_script}" > "{log_file}" 2>&1'
         else:
             # On Unix-like systems, redirect to log file
-            rez_command = f'rez-env steamroller.ui.submit yaml -- python "{launcher_script}" > "{log_file}" 2>&1'
+            rez_command = f'rez-env ui_submit yaml -- python "{launcher_script}" > "{log_file}" 2>&1'
         
         logger.info("Launching UI with Rez command: %s", rez_command)
         if project_id:

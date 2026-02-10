@@ -81,7 +81,7 @@ def show_dialog(app_instance):
         # Redirect output to log file in the command itself (works better with shell=True)
         if sys.platform == "win32":
             # On Windows, redirect both stdout and stderr to log file, and hide console window
-            rez_command = f'rez-env ui_submit yaml -- python "{launcher_script}" > "{log_file}" 2>&1'
+            rez_command = f'powershell.exe -executionpolicy bypass rez-env ui_submit yaml -- python "{launcher_script}" > "{log_file}" 2>&1'
         else:
             # On Unix-like systems, redirect to log file
             rez_command = f'rez-env ui_submit yaml -- python "{launcher_script}" > "{log_file}" 2>&1'

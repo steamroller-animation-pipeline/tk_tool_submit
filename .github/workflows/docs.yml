@@ -33,7 +33,7 @@ jobs:
             mkdocs-gen-files mkdocs-literate-nav
 
       - name: Normalize README encoding
-        run: python -c "f='README.md'; import os; d=open(f,'rb').read() if os.path.exists(f) else None; d and open(f,'wb').write(d.decode('utf-16').encode('utf-8') if d[:2] in (b'\xff\xfe',b'\xfe\xff') else d.lstrip(b'\xef\xbb\xbf'))"
+        run: echo "aW1wb3J0IG9zCmYgPSAnUkVBRE1FLm1kJwppZiBub3Qgb3MucGF0aC5leGlzdHMoZik6CiAgICBleGl0KDApCmQgPSBvcGVuKGYsICdyYicpLnJlYWQoKQppZiBkWzoyXSBpbiAoYnl0ZXMoWzB4ZmYsMHhmZV0pLCBieXRlcyhbMHhmZSwweGZmXSkpOgogICAgdCA9IGQuZGVjb2RlKCd1dGYtMTYnKQplbGlmIGRbOjNdID09IGJ5dGVzKFsweGVmLDB4YmIsMHhiZl0pOgogICAgdCA9IGRbMzpdLmRlY29kZSgndXRmLTgnKQplbHNlOgogICAgdHJ5OgogICAgICAgIHQgPSBkLmRlY29kZSgndXRmLTgnKQogICAgZXhjZXB0IFVuaWNvZGVEZWNvZGVFcnJvcjoKICAgICAgICB0ID0gZC5kZWNvZGUoJ2xhdGluLTEnKQpvcGVuKGYsICd3JywgZW5jb2Rpbmc9J3V0Zi04Jykud3JpdGUodCkK" | base64 -d | python
 
       - name: Copy images into docs
         run: |

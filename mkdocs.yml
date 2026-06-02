@@ -1,0 +1,39 @@
+site_name: Tk Tool Submit
+site_url: https://docs.pipeline.steamrolleranimation.com/tk_tool_submit/
+
+theme:
+  name: material
+  palette:
+    scheme: default
+    primary: indigo
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - content.code.copy
+
+markdown_extensions:
+  - pymdownx.snippets:
+      base_path: ["."]
+      encoding: utf-8-sig
+
+plugins:
+  - search
+  - gen-files:
+      scripts:
+        - docs/gen_ref_pages.py
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [python]
+          options:
+            show_source: true
+            show_root_heading: true
+            docstring_style: google
+
+nav:
+  - '← All Pipeline Docs': https://docs.pipeline.steamrolleranimation.com
+  - Home: index.md
+  - API Reference: reference/

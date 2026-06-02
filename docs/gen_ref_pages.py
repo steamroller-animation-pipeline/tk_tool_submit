@@ -2,7 +2,7 @@
 from pathlib import Path
 import mkdocs_gen_files
 
-SKIP_DIRS = ('vendor', 'vendors', 'extern', 'externals', 'third_party', 'venv', '.venv', 'site-packages', 'bin', 'scripts')
+SKIP_DIRS = ('vendor', 'vendors', 'extern', 'externals', 'third_party', 'venv', '.venv', 'site-packages', 'bin', 'scripts', 'startup', 'hooks', 'resources', 'tests', 'test')
 SKIP_PREFIXES = ('tank_vendor', 'vendor_')
 
 src = Path("python")

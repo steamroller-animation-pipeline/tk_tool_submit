@@ -2,50 +2,10 @@ name: Deploy Docs
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   workflow_dispatch:
 
 jobs:
-  deploy-docs:
-    runs-on: [self-hosted, docker-01]
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install system dependencies
-        run: sudo apt-get install -y libxml2-dev libxslt1-dev
-
-      - name: Install project dependencies
-        run: |
-          if [ -f pyproject.toml ]; then
-            python -m pip install -e ".[docs]" 2>/dev/null || python -m pip install -e . 2>/dev/null || true
-          elif [ -f requirements.txt ]; then
-            python -m pip install -r requirements.txt || true
-          fi
-
-      - name: Install docs dependencies
-        run: |
-          python -m pip install \
-            mkdocs mkdocs-material mkdocstrings[python] \
-            mkdocs-gen-files mkdocs-literate-nav
-
-      - name: Normalize README encoding
-        run: echo "aW1wb3J0IG9zCmYgPSAnUkVBRE1FLm1kJwppZiBub3Qgb3MucGF0aC5leGlzdHMoZik6CiAgICBleGl0KDApCmQgPSBvcGVuKGYsICdyYicpLnJlYWQoKQppZiBkWzoyXSBpbiAoYnl0ZXMoWzB4ZmYsMHhmZV0pLCBieXRlcyhbMHhmZSwweGZmXSkpOgogICAgdCA9IGQuZGVjb2RlKCd1dGYtMTYnKQplbGlmIGRbOjNdID09IGJ5dGVzKFsweGVmLDB4YmIsMHhiZl0pOgogICAgdCA9IGRbMzpdLmRlY29kZSgndXRmLTgnKQplbHNlOgogICAgdHJ5OgogICAgICAgIHQgPSBkLmRlY29kZSgndXRmLTgnKQogICAgZXhjZXB0IFVuaWNvZGVEZWNvZGVFcnJvcjoKICAgICAgICB0ID0gZC5kZWNvZGUoJ2xhdGluLTEnKQpvcGVuKGYsICd3JywgZW5jb2Rpbmc9J3V0Zi04Jykud3JpdGUodCkK" | base64 -d | python
-
-      - name: Copy images into docs
-        run: |
-          for dir in images imgs assets _docs_for_template docs_images; do
-            [ -d "$dir" ] && cp -r "$dir" docs/ 2>/dev/null || true
-          done
-          sed -i 's|\\|/|g' docs/index.md 2>/dev/null || true
-
-      - name: Build docs
-        run: python -m mkdocs build --no-strict
-
-      - name: Deploy to docs host
-        run: |
-          rm -rf /var/www/pipeline-docs/tk_tool_submit/*
-          cp -r site/. /var/www/pipeline-docs/tk_tool_submit/
+  docs:
+    uses: steamroller-animation-pipeline/workflows/.github/workflows/deploy_docs.yml@main
+    secrets: inherit
